@@ -1,0 +1,61 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import designSystem from './caliza.png'
+
+export const article = {
+  author: 'Jacobo Ganon',
+  date: '2023-08',
+  title: 'Caliza Gym Full Stack Web Development',
+  description:
+    'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Caliza is a gymnastics, and bouldering gym located in Mexico. There is little software to help manage gyms in Mexico,
+and the software that does exist is often outdated and difficult to use. In Caliza I worked to create a gym
+software with the owners that would help manage everything in the gym and later sold it to other gyms.
+
+<Image src={designSystem} alt="" />
+
+It helps manage the class schedule, the gym's members, the gym's inventory, and the gym's finances. It also helps the gym's members and parents track their progress and see how they are improving over time.
+
+## Customizability
+
+One of the most important features of the software is its customizability.
+The software is designed to be easily customizable so that it can be used by any gym, not just Caliza.
+The software can be easily customized to fit the needs of any gym, no matter how big, small, or the activities that it supports.
+
+The gym's can change the price of classes, create discounts for students, set the activities that the gym offers with
+the corresponding progression plans, and many other customizable features.
+
+## Features
+
+- Students have the ability to change change the classes they are taking as long as there are
+  available slots and it is in the same level they are currently in.
+
+- Payments can be done online with a one time payment or subscription model
+  and the system will automatically update the student's status.
+
+- The system tracks the inventory of sold items and the gym's finances with any payments done in the gym or online.
+
+- QRCodes to enter the gym and track the student's and employee attendance.
+
+- Employee section where they can see their schedule, the classes they are teaching, and the students they are in charge of.
+
+- Authentication and authorization portal with different roles for the administrators, employees, and students.
+
+- Many more features that help the gym run smoothly and efficiently.
+
+## Technology Stack
+
+- **Frontend**: Nextjs, Shadcn UI, and Tailwind CSS.
+- **Backend**: Prisma, SQL, Nextjs API endpoints, and Planetscale.
+- **Authentication and Authorization**: NextAuth Server Sessions.
+- **Payment System**: Stripe.
+- **Email System**: Resend.
+- **Design System**: Figma.

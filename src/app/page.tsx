@@ -92,7 +92,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>Project Information</Card.Cta>
     </Card>
   )
 }
@@ -204,7 +204,12 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
+      <Button
+        href="/Jacobo_Ganon_CV.pdf"
+        variant="secondary"
+        className="group mt-6 w-full"
+        download
+      >
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
@@ -256,7 +261,7 @@ export default async function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="#"
+              href="https://www.instagram.com/jacobgano2003?igsh=ZjRyeDBlaXo2M2Z2&utm_source=qr"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
