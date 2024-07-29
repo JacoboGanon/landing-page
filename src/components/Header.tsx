@@ -15,12 +15,7 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
-
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Projects', href: '/articles' },
-  { name: 'About', href: '/about' },
-]
+import { navigation } from './Footer'
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (

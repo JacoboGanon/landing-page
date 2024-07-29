@@ -8,10 +8,10 @@ export async function GET(req: Request) {
   if (!siteUrl) {
     throw Error('Missing NEXT_PUBLIC_SITE_URL environment variable')
   }
-  
+
   let author = {
-    name: 'Spencer Sharp',
-    email: 'spencer@planetaria.tech',
+    name: 'Jacobo Ganon',
+    email: '22jacganon@gmail.com',
   }
 
   let feed = new Feed({
