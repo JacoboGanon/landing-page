@@ -92,16 +92,20 @@ export default function About() {
               complex projects.
             </p>
             <p>
-              In Mexico software development is not as popular as it is in the
-              United States so we had to learn everything on our own. However,
-              this also gave us a great opportunity to work with company owners
-              and develop software for them.
+              We quickly ran into issues because in Mexico software development
+              is not as popular as it is in the United States so we had to learn
+              everything on our own. However, this also gave us a great
+              opportunity to work with company owners and develop software for
+              them, we both quickly went into app development where we
+              discovered how difficult scalability can be.
             </p>
             <p>
-              I am currently a student in Arizona State University where I have
-              learnt how to build efficient and scalable projects. With this
-              knowledge I have been able to build better projects in Mexico and
-              hope to do so in United States soon as well.
+              To continue down this path I decided to study in the United
+              States. I am currently a student in Arizona State University where
+              I have learnt how to build efficient and scalable projects. With
+              this knowledge I have been able to build projects in Mexico that
+              has helped companies grow and make their processes more efficient
+              and hope to do so in United States soon as well.
             </p>
           </div>
         </div>
