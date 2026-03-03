@@ -1,0 +1,87 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import vinosDashboard from './vinos-dashboard.png'
+import vinosOrders from './vinos-orders.png'
+import vinosInventory from './vinos-inventory.png'
+
+export const article = {
+  author: 'Jacobo Ganon',
+  date: '2025-08',
+  title: 'Vinos: Restaurant Wine Management Platform',
+  description:
+    'Vinos is a wine management platform for restaurants and wine providers. It tracks inventory at the individual bottle level, comes with a tablet point-of-sale app for floor staff, supports multiple restaurant locations with role-based access, and handles purchase orders, supplier management, and sales analytics.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Vinos is a wine management platform built for restaurants that want real control over their cellar.
+Most restaurant wine systems treat wine as generic inventory, which falls apart once you need to track
+individual bottles, partial pours, and where everything is physically stored. Vinos handles all of that,
+so the team always knows what has been sold, what is left, and where each bottle sits in the cellar.
+
+<Image src={vinosDashboard} alt="Vinos restaurant dashboard and wine inventory overview" />
+
+## Multi-Restaurant Architecture
+
+Each restaurant gets its own isolated inventory, employees, and sales history. A seven-tier role system
+covers everyone from general staff up through wine cellar workers, managers, inspectors, and administrators,
+so each person only sees and does what their role allows. Owners with multiple locations can manage all of
+them from one account, with each location running independently.
+
+Wine providers are their own entity type in the system. Restaurants source wine from registered providers,
+who go through an admin approval process before their catalog shows up. That keeps supplier relationships
+organized and easy to audit.
+
+## Tablet POS Integration
+
+Floor staff use dedicated tablets to log bottle sales, glass pours, and tastings as they happen. Each tablet
+is registered as a trusted device using a public key, and every request it sends is signed with HMAC-SHA256
+and validated on the server with nonce checks to stop replay attacks.
+
+Staff sign in on the tablet with a short numeric code, which is fast enough for a busy service. Every
+transaction is tied to the person who made it, and orders are grouped by session and synced back to the
+main platform so managers can review everything.
+
+## Features
+
+- Individual bottle tracking with status and remaining volume, so a partially-poured bottle is always accounted for.
+
+- Wine profiles with taste ratings (sweetness, acidity, tannin, body on a 1–5 scale), flavor tags, winery, vintage, and pricing per bottle and per glass.
+
+- Cellar location management: bottles are assigned to physical storage areas and can be transferred between locations with a full movement log.
+
+- Minimum stock thresholds with alerts so managers know when to reorder before a wine runs out.
+
+- Purchase order workflow: create orders to suppliers, track delivery status, and confirm batch arrivals to update inventory automatically.
+
+- Analytics dashboard with 30-day revenue rankings by wine, sales trends over time, and breakdowns by sale type and employee.
+
+- Full transaction history covering every inventory event: entries, sales, glass pours, tastings, transfers, removals, and returns.
+
+- Stripe integration for subscription billing across restaurant accounts.
+
+<Image src={vinosOrders} alt="Vinos purchase orders and supplier delivery tracking" />
+
+<Image src={vinosInventory} alt="Vinos wine cellar inventory management and storage locations" />
+
+## Technology Stack
+
+- **Framework**: Next.js 16 (App Router), TypeScript, pnpm monorepo with Turbo
+- **Frontend**: React 19, Tailwind CSS v4, shadcn/ui, TanStack Query
+- **Backend**: tRPC v11, Prisma ORM, PostgreSQL
+- **Authentication**: NextAuth v5 with Google OAuth and email verification
+- **Tablet POS**: Expo (React Native) with HMAC-SHA256 signed requests and device enrollment
+- **Payments**: Stripe (subscriptions and billing)
+- **Email**: Resend for transactional email
+- **Task Queue**: Upstash QStash for background jobs
+- **File Uploads**: UploadThing
+- **Error Tracking**: Sentry
+
+## Demo
+
+Vinos is not publicly accessible as the platform is deployed for private restaurant use.
+For a full walkthrough of the platform or to discuss the architecture, contact me at 22jacganon@gmail.com.
