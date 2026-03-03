@@ -1,4 +1,6 @@
 import { type Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale } from 'next-intl/server'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
@@ -19,19 +21,23 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale()
+
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html lang={locale} className="h-full antialiased" suppressHydrationWarning>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
-        <Providers>
-          <div className="flex w-full">
-            <Layout>{children}</Layout>
-          </div>
-        </Providers>
+        <NextIntlClientProvider>
+          <Providers>
+            <div className="flex w-full">
+              <Layout>{children}</Layout>
+            </div>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

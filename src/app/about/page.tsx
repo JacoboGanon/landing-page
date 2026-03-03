@@ -2,6 +2,7 @@ import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { getTranslations } from 'next-intl/server'
 
 import { Container } from '@/components/Container'
 import {
@@ -10,7 +11,6 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import portraitImage from '@/images/portrait.jpg'
 
 function SocialLink({
   className,
@@ -50,63 +50,45 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+    "I'm Jacobo Ganon, a software engineer and data scientist based in Arizona, building scalable web applications and ML systems.",
 }
 
-export default function About() {
+export default async function About() {
+  const t = await getTranslations('about')
+
   return (
     <Container className="mt-16 sm:mt-32">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">
             <Image
-              src={portraitImage}
+              src="/images/portrait.jpg"
               alt=""
+              width={3831}
+              height={5746}
               sizes="(min-width: 1024px) 32rem, 20rem"
-              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover object-top dark:bg-zinc-800"
             />
           </div>
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I&apos;m Jacobo Ganon a software engineer and data scientist.
+            {t('heading')}
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              This page will not contain much information on my accomplishments
-              as it is mostly for information about me. If you are looking for
-              my previous projects visit the{' '}
+              {t('paragraph1Before')}{' '}
               <Link
                 href="/"
                 className="text-blue-500 underline hover:text-blue-600"
               >
-                main page
+                {t('paragraph1Link')}
               </Link>
-              .
+              {t('paragraph1After')}
             </p>
-            <p>
-              I started programming when I was 15 years old with a friend of
-              mine. When we started out it was just a way to challenge ourselves
-              and we quickly progressed. We started with simple projects that
-              could be done in a couple of days and then moved on to more
-              complex projects.
-            </p>
-            <p>
-              We quickly ran into issues because in Mexico software development
-              is not as popular as it is in the United States so we had to learn
-              everything on our own. However, this also gave us a great
-              opportunity to work with company owners and develop software for
-              them, we both quickly went into app development where we
-              discovered how difficult scalability can be.
-            </p>
-            <p>
-              To continue down this path I decided to study in the United
-              States. I am currently a student in Arizona State University where
-              I have learnt how to build efficient and scalable projects. With
-              this knowledge I have been able to build projects in Mexico that
-              has helped companies grow and make their processes more efficient
-              and hope to do so in United States soon as well.
-            </p>
+            <p>{t('paragraph2')}</p>
+            <p>{t('paragraph3')}</p>
+            <p>{t('paragraph4')}</p>
           </div>
         </div>
         <div className="lg:pl-20">
@@ -116,21 +98,21 @@ export default function About() {
               icon={InstagramIcon}
               className="mt-4"
             >
-              Follow on Instagram
+              {t('instagram')}
             </SocialLink>
             <SocialLink
               href="https://github.com/JacoboGanon"
               icon={GitHubIcon}
               className="mt-4"
             >
-              Follow on GitHub
+              {t('github')}
             </SocialLink>
             <SocialLink
               href="https://www.linkedin.com/in/jacobo-ganon"
               icon={LinkedInIcon}
               className="mt-4"
             >
-              Follow on LinkedIn
+              {t('linkedin')}
             </SocialLink>
             <SocialLink
               href="mailto:22jacganon@gmail.com"

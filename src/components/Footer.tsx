@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 
 import { ContainerInner, ContainerOuter } from '@/components/Container'
 
 export const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Projects', href: '/articles' },
-  { name: 'About', href: '/about' },
+  { key: 'home' as const, href: '/' },
+  { key: 'projects' as const, href: '/articles' },
+  { key: 'about' as const, href: '/about' },
 ]
 
 function NavLink({
@@ -25,7 +26,11 @@ function NavLink({
   )
 }
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations('nav')
+  const tf = await getTranslations('footer')
+  const year = new Date().getFullYear()
+
   return (
     <footer className="mt-32 flex-none">
       <ContainerOuter>
@@ -35,13 +40,12 @@ export function Footer() {
               <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                 {navigation.map((item) => (
                   <NavLink key={item.href} href={item.href}>
-                    {item.name}
+                    {t(item.key)}
                   </NavLink>
                 ))}
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Jacobo Ganon. All rights
-                reserved.
+                {tf('copyright', { year })}
               </p>
             </div>
           </ContainerInner>

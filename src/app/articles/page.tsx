@@ -1,11 +1,18 @@
 import { type Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
-function Article({ article }: { article: ArticleWithSlug }) {
+function Article({
+  article,
+  cta,
+}: {
+  article: ArticleWithSlug
+  cta: string
+}) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
@@ -21,7 +28,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
           {formatDate(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Project Information</Card.Cta>
+        <Card.Cta>{cta}</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
@@ -41,17 +48,15 @@ export const metadata: Metadata = {
 }
 
 export default async function ArticlesIndex() {
+  const t = await getTranslations('articles')
   let articles = await getAllArticles()
 
   return (
-    <SimpleLayout
-      title="Project Descriptions and Information"
-      intro="Big projects that I have worked on collected in chronological order."
-    >
+    <SimpleLayout title={t('pageTitle')} intro={t('intro')}>
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
           {articles.map((article) => (
-            <Article key={article.slug} article={article} />
+            <Article key={article.slug} article={article} cta={t('projectInfo')} />
           ))}
         </div>
       </div>
