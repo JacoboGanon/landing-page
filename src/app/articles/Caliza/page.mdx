@@ -6,7 +6,7 @@ export const article = {
   date: '2023-08',
   title: 'Caliza Gym Full Stack Web Development',
   description:
-    'Caliza is a gymnastics, and bouldering gym located in Mexico. There is little software to help manage gyms in Mexico, and the software that does exist is often outdated and difficult to use. In Caliza I worked to create a gym software with the owners that would help manage everything in the gym and later sold it to other gyms.',
+    'Caliza is a multi-tenant SaaS platform for gym and fitness center management. What started as custom software for a single gymnastics and bouldering gym in Mexico has grown into a franchise-ready system that handles class scheduling, memberships, employee payroll, financial analytics, and QR-based attendance across multiple gym locations.',
 }
 
 export const metadata = {
@@ -16,51 +16,74 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-Caliza is a gymnastics, and bouldering gym located in Mexico. There is little software to help manage gyms in Mexico,
-and the software that does exist is often outdated and difficult to use. In Caliza I worked to create a gym
-software with the owners that would help manage everything in the gym and later sold it to other gyms.
+Caliza is a gymnastics and bouldering gym located in Mexico. There is little software to help manage gyms in Mexico,
+and the software that does exist is often outdated and difficult to use. What began as a custom solution built with
+the gym owners has evolved into a fully multi-tenant SaaS platform now used across multiple gym locations.
 
 <Image src={designSystem} alt="" />
 
-It helps manage the class schedule, the gym's members, the gym's inventory, and the gym's finances. It also helps the gym's members and parents track their progress and see how they are improving over time.
+The platform handles everything the gym needs to operate: class scheduling, member management, employee payroll,
+inventory, finances, and attendance tracking via QR codes. It has since been expanded to support franchise networks,
+allowing multiple gyms to be managed under a single umbrella with shared analytics.
 
-## Customizability
+## Multi-Tenant Architecture
 
-One of the most important features of the software is its customizability.
-The software is designed to be easily customizable so that it can be used by any gym, not just Caliza.
-The software can be easily customized to fit the needs of any gym, no matter how big, small, or the activities that it supports.
+The platform is built with a database-driven multi-tenant architecture. Each gym gets its own subdomain
+(e.g., `calizagym.com`) and the system resolves all gym-specific configuration from the database on every request,
+including pricing, Stripe account, email settings, and subscription status. There is no code-level separation
+between tenants; isolation is enforced entirely at the data layer.
 
-The gym's can change the price of classes, create discounts for students, set the activities that the gym offers with
-the corresponding progression plans, and many other customizable features.
+A 7-day grace period allows gyms to continue operating after a subscription expires while renewal is being processed.
+
+## Franchise Support
+
+Gym owners can manage multiple locations under a single franchise account. A dedicated analytics dashboard
+aggregates revenue, membership counts, and attendance across all locations, giving franchise administrators
+a unified view of their entire operation.
 
 ## Features
 
-- Students have the ability to change change the classes they are taking as long as there are
-  available slots and it is in the same level they are currently in.
+- Members can browse and register for classes, change class slots as long as spots are available, and
+  track their progression through training programs.
 
-- Payments can be done online with a one time payment or subscription model
-  and the system will automatically update the student's status.
+- Payments are handled online via Stripe, supporting both one-time payments and subscription models.
+  The system automatically updates member status when payments are processed or expire.
 
-- The system tracks the inventory of sold items and the gym's finances with any payments done in the gym or online.
+- QR codes are used for gym entry and class attendance, tracking both member and employee check-ins
+  in real time.
 
-- QRCodes to enter the gym and track the student's and employee attendance.
+- Employees have a dedicated section to view their schedule, classes they are teaching, and the
+  members they are responsible for. Payroll is calculated automatically from their hours and rates.
 
-- Employee section where they can see their schedule, the classes they are teaching, and the students they are in charge of.
+- Financial reports consolidate all transactions into a unified dashboard with exportable breakdowns,
+  covering online payments, in-gym sales, and product purchases.
 
-- Authentication and authorization portal with different roles for the administrators, employees, and students.
+- An announcement system lets administrators broadcast messages to targeted member segments (e.g.,
+  members with expiring memberships or upcoming birthdays).
 
-- Many more features that help the gym run smoothly and efficiently.
+- Scheduled emails are sent automatically for birthdays, membership expirations, and achievement
+  milestones using QStash cron jobs.
+
+- A product catalog allows gyms to sell merchandise, with inventory tracking and purchase history
+  tied to each member's account.
+
+- AI-powered features are integrated for select workflows using Google Generative AI and OpenAI.
 
 ## Technology Stack
 
-- **Frontend**: Nextjs, Shadcn UI, and Tailwind CSS.
-- **Backend**: Prisma, SQL, Nextjs API endpoints, and Planetscale.
-- **Authentication and Authorization**: NextAuth Server Sessions.
-- **Payment System**: Stripe.
-- **Email System**: Resend.
-- **Design System**: Figma.
+- **Framework**: Next.js 16 (T3 Stack, App Router), TypeScript 5.8+, Turbo monorepo, pnpm
+- **Frontend**: React 19, Tailwind CSS v4, shadcn/ui, TanStack Query
+- **Backend**: tRPC v11 (type-safe RPC), Prisma ORM, PostgreSQL
+- **Authentication**: Better Auth 1.4.0 with Google OAuth and magic links via Resend
+- **Payments**: Stripe and Stripe Connect (franchise revenue splits)
+- **Email**: Resend with per-gym sender configuration and React Email templates
+- **Scheduled Tasks**: QStash for cron jobs (payment processing, birthday and expiration emails)
+- **File Uploads**: UploadThing backed by Supabase Storage
+- **AI**: Google Generative AI, OpenAI via Vercel AI SDK
+- **Error Tracking**: Sentry
+- **Design**: Figma
 
 ## Demo
 
-Although the full software is not available with the administration side the client side can be seen at [Caliza](https://calizagym.com).
-For more information contact me at 22jacganon@gmail.com to setup a meeting and see the full software in action.
+Although the full administration side is not publicly accessible, the member-facing side can be seen at [calizagym.com](https://calizagym.com).
+For more information contact me at 22jacganon@gmail.com to set up a meeting and see the full platform in action.
