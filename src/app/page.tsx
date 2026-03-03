@@ -230,45 +230,42 @@ function Photos() {
   return (
     <Container className="mt-16 sm:mt-20">
       <div className="flex flex-col gap-3 sm:gap-4">
-        {/* Row 1: 3 portraits — equal widths, equal heights */}
+        {/* Row 1: 3 portrait frames (2:3) — object-cover handles EXIF rotation & ratio differences */}
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
           {[
-            { src: '/images/photos/image-1.jpg', w: 3744, h: 5616 },
-            { src: '/images/photos/image-3.png', w: 1024, h: 1536 },
-            { src: '/images/photos/image-4.png', w: 1024, h: 1536 },
-          ].map((photo) => (
+            '/images/photos/Desert.jpeg',
+            '/images/photos/image-3.png',
+            '/images/photos/image-4.png',
+          ].map((src) => (
             <div
-              key={photo.src}
-              className="overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:rounded-2xl"
+              key={src}
+              className="relative aspect-[2/3] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:rounded-2xl"
             >
               <Image
-                src={photo.src}
+                src={src}
                 alt=""
-                width={photo.w}
-                height={photo.h}
-                className="h-auto w-full"
+                fill
+                className="object-cover object-center"
                 sizes="33vw"
               />
             </div>
           ))}
         </div>
-        {/* Row 2: 2 landscapes — column widths proportional to aspect ratios so both rows are the same height */}
-        {/* Presentation 3:2 = 1.5, image-5 16:9 = 1.778 → ratio 27:32 → same height for both */}
-        <div className="grid gap-3 sm:gap-4" style={{ gridTemplateColumns: '27fr 32fr' }}>
+        {/* Row 2: 2 landscape frames (3:2) — equal width, equal height */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {[
-            { src: '/images/photos/Presentation.png', w: 1536, h: 1024 },
-            { src: '/images/photos/image-5.jpg', w: 4240, h: 2384 },
-          ].map((photo) => (
+            '/images/photos/Presentation.png',
+            '/images/photos/Hike.jpg',
+          ].map((src) => (
             <div
-              key={photo.src}
-              className="overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:rounded-2xl"
+              key={src}
+              className="relative aspect-[3/2] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:rounded-2xl"
             >
               <Image
-                src={photo.src}
+                src={src}
                 alt=""
-                width={photo.w}
-                height={photo.h}
-                className="h-auto w-full"
+                fill
+                className="object-cover object-center"
                 sizes="50vw"
               />
             </div>
@@ -282,6 +279,18 @@ function Photos() {
 export default async function Home() {
   const t = await getTranslations('home')
   let articles = (await getAllArticles()).slice(0, 4)
+
+  const localizedArticles = await Promise.all(
+    articles.map(async (article) => {
+      try {
+        const namespace = `article_${article.slug.toLowerCase()}` as Parameters<typeof getTranslations>[0]
+        const at = await getTranslations(namespace)
+        return { ...article, title: at('title'), description: at('description') }
+      } catch {
+        return article
+      }
+    })
+  )
 
   return (
     <>
@@ -316,7 +325,7 @@ export default async function Home() {
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
-            {articles.map((article) => (
+            {localizedArticles.map((article) => (
               <Article key={article.slug} article={article} cta={t('projectInfo')} />
             ))}
           </div>
