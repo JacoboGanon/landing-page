@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "menu": "Menu",
+    "navigation": "Navigation",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "tagline": "Software Engineer, Data Scientist, and AI Engineer.",
+    "bio": "I'm Jacob, a software engineer and data scientist student based in Arizona. I specialize in building and deploying machine learning models, and web applications.",
+    "experience": "Experience",
+    "downloadCV": "Download CV",
+    "present": "Present",
+    "projectInfo": "Project Information",
+    "instagram": "Follow on Instagram",
+    "github": "Follow on GitHub",
+    "linkedin": "Follow on LinkedIn"
+  },
+  "about": {
+    "heading": "I'm Jacobo Ganon a software engineer and data scientist.",
+    "paragraph1Before": "This page will not contain much information on my accomplishments as it is mostly for information about me. If you are looking for my previous projects visit the",
+    "paragraph1Link": "main page",
+    "paragraph1After": ".",
+    "paragraph2": "I started programming when I was 15 years old with a friend of mine. When we started out it was just a way to challenge ourselves and we quickly progressed. We started with simple projects that could be done in a couple of days and then moved on to more complex projects.",
+    "paragraph3": "We quickly ran into issues because in Mexico software development is not as popular as it is in the United States so we had to learn everything on our own. However, this also gave us a great opportunity to work with company owners and develop software for them, we both quickly went into app development where we discovered how difficult scalability can be.",
+    "paragraph4": "To continue down this path I decided to study in the United States. I am currently a student in Arizona State University where I have learnt how to build efficient and scalable projects. With this knowledge I have been able to build projects in Mexico that has helped companies grow and make their processes more efficient and hope to do so in United States soon as well.",
+    "instagram": "Follow on Instagram",
+    "github": "Follow on GitHub",
+    "linkedin": "Follow on LinkedIn"
+  },
+  "articles": {
+    "pageTitle": "Project Descriptions and Information",
+    "intro": "Big projects that I have worked on collected in chronological order.",
+    "projectInfo": "Project Information"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "goHome": "Go back home"
+  },
+  "footer": {
+    "copyright": "© {year} Jacobo Ganon. All rights reserved."
+  },
+  "theme": {
+    "switchToDark": "Switch to dark theme",
+    "switchToLight": "Switch to light theme",
+    "toggle": "Toggle theme"
+  },
+  "locale": {
+    "switch": "Switch language"
+  }
+}

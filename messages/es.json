@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Acerca De",
+    "menu": "Menú",
+    "navigation": "Navegación",
+    "closeMenu": "Cerrar menú"
+  },
+  "home": {
+    "tagline": "Ingeniero de Software, Científico de Datos e Ingeniero de IA.",
+    "bio": "Soy Jacobo, ingeniero de software y estudiante de ciencia de datos en Arizona. Me especializo en construir y desplegar modelos de machine learning y aplicaciones web.",
+    "experience": "Experiencia",
+    "downloadCV": "Descargar CV",
+    "present": "Presente",
+    "projectInfo": "Información del Proyecto",
+    "instagram": "Seguir en Instagram",
+    "github": "Seguir en GitHub",
+    "linkedin": "Seguir en LinkedIn"
+  },
+  "about": {
+    "heading": "Soy Jacobo Ganon, ingeniero de software y científico de datos.",
+    "paragraph1Before": "Esta página no contendrá mucha información sobre mis logros ya que es principalmente para hablar de mí. Si buscas mis proyectos anteriores visita la",
+    "paragraph1Link": "página principal",
+    "paragraph1After": ".",
+    "paragraph2": "Empecé a programar a los 15 años con un amigo. Al principio era solo una forma de desafiarnos y progresamos rápidamente. Comenzamos con proyectos simples que podían hacerse en un par de días y luego pasamos a proyectos más complejos.",
+    "paragraph3": "Rápidamente nos encontramos con obstáculos porque en México el desarrollo de software no es tan popular como en Estados Unidos, por lo que tuvimos que aprender todo por nuestra cuenta. Sin embargo, esto también nos dio la oportunidad de trabajar con dueños de empresas y desarrollar software para ellos; ambos nos adentramos en el desarrollo de apps donde descubrimos lo difícil que puede ser la escalabilidad.",
+    "paragraph4": "Para continuar por este camino decidí estudiar en Estados Unidos. Actualmente soy estudiante en la Universidad Estatal de Arizona donde he aprendido a construir proyectos eficientes y escalables. Con este conocimiento he podido construir proyectos en México que han ayudado a las empresas a crecer y hacer sus procesos más eficientes, y espero hacerlo en Estados Unidos pronto también.",
+    "instagram": "Seguir en Instagram",
+    "github": "Seguir en GitHub",
+    "linkedin": "Seguir en LinkedIn"
+  },
+  "articles": {
+    "pageTitle": "Descripciones e Información de Proyectos",
+    "intro": "Grandes proyectos en los que he trabajado en orden cronológico.",
+    "projectInfo": "Información del Proyecto"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, no pudimos encontrar la página que buscas.",
+    "goHome": "Volver al inicio"
+  },
+  "footer": {
+    "copyright": "© {year} Jacobo Ganon. Todos los derechos reservados."
+  },
+  "theme": {
+    "switchToDark": "Cambiar a tema oscuro",
+    "switchToLight": "Cambiar a tema claro",
+    "toggle": "Cambiar tema"
+  },
+  "locale": {
+    "switch": "Cambiar idioma"
+  }
+}
