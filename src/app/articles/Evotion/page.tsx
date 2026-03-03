@@ -6,7 +6,7 @@ import evotionHero from './evotion-hero.png'
 import evotionModels from './evotion-models.png'
 import evotionChat from './evotion-chat.png'
 
-export const article = {
+const article = {
   author: 'Jacobo Ganon',
   date: '2025-01',
   title: 'Evotion: AI Platform Full Stack Development',

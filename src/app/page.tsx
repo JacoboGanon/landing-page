@@ -283,8 +283,8 @@ export default async function Home() {
   const localizedArticles = await Promise.all(
     articles.map(async (article) => {
       try {
-        const namespace = `article_${article.slug.toLowerCase()}` as Parameters<typeof getTranslations>[0]
-        const at = await getTranslations(namespace)
+        const namespace = `article_${article.slug.toLowerCase()}` as any
+        const at = await getTranslations(namespace) as any
         return { ...article, title: at('title'), description: at('description') }
       } catch {
         return article

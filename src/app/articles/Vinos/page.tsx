@@ -6,7 +6,7 @@ import vinosDashboard from './vinos-dashboard.png'
 import vinosOrders from './vinos-orders.png'
 import vinosInventory from './vinos-inventory.png'
 
-export const article = {
+const article = {
   author: 'Jacobo Ganon',
   date: '2025-08',
   title: 'Vinos: Restaurant Wine Management Platform',

@@ -2,7 +2,7 @@ import React from 'react'
 import { getTranslations } from 'next-intl/server'
 import { ArticleLayout } from '@/components/ArticleLayout'
 
-export const article = {
+const article = {
   author: 'Jacobo Ganon',
   date: '2022-01',
   title: 'App Development for Moga',

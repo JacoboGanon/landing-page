@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import { ArticleLayout } from '@/components/ArticleLayout'
 import designSystem from './caliza.png'
 
-export const article = {
+const article = {
   author: 'Jacobo Ganon',
   date: '2023-08',
   title: 'Caliza Gym Full Stack Web Development',
